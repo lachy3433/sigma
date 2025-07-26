@@ -5,8 +5,13 @@ export const useAppState = () => {
   // ==============================================
   // STATE MANAGEMENT
   // ==============================================
-  const [currentPage, setCurrentPage] = useState('login');
-  const [user, setUser] = useState(null);
+  const [currentPage, setCurrentPage] = useState('dashboard');
+  const [user, setUser] = useState({
+    name: 'John Smith',
+    email: 'foreman@example.com',
+    role: 'foreman',
+    company: 'ABC Construction Corp'
+  });
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [showModal, setShowModal] = useState(null);
   const [loading, setLoading] = useState(false);
