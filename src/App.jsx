@@ -28,6 +28,7 @@ const App = () => {
     setShowModal,
     showToast,
     withLoading,
+    workforce,
     handleLogin,
     handleSignup,
     handleLogout,
