@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { mockData } from '../data/mockData.jsx';
+import { mockData } from '../data/mockData';
 
 export const useAppState = () => {
   // ==============================================

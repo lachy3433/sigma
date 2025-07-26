@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useAppState } from '../hooks/useAppState.jsx';
+import { useAppState } from '../hooks/useAppState';
 import LoadingSpinner from '../components/LoadingSpinner';
 
 const CompanySetupPage = () => {

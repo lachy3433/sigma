@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { useAppState } from '../hooks/useAppState.jsx';
-import LoadingSpinner from '../components/LoadingSpinner.jsx';
+import { useAppState } from '../hooks/useAppState';
+import LoadingSpinner from '../components/LoadingSpinner';
 
 const AuthPage = () => {
   const { handleLogin, handleSignup, handleForgotPassword, loading, showToast } = useAppState();

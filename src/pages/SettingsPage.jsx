@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { useAppState } from '../hooks/useAppState.jsx';
-import Layout from '../components/Layout.jsx';
+import { useAppState } from '../hooks/useAppState';
+import Layout from '../components/Layout';
 import LoadingSpinner from '../components/LoadingSpinner';
 
 const SettingsPage = () => {

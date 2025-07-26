@@ -1,22 +1,22 @@
 import React from 'react';
-import AuthPage from './pages/AuthPage.jsx';
-import CompanySetupPage from './pages/CompanySetupPage.jsx';
-import DashboardPage from './pages/DashboardPage.jsx';
-import WorkforcePage from './pages/WorkforcePage.jsx';
-import CompliancePage from './pages/CompliancePage.jsx';
-import IncidentsPage from './pages/IncidentsPage.jsx';
-import TrainingPage from './pages/TrainingPage.jsx';
-import ReportsPage from './pages/ReportsPage.jsx';
-import SettingsPage from './pages/SettingsPage.jsx';
-import WorkerProfilePage from './pages/WorkerProfilePage.jsx';
-import Toast from './components/Toast.jsx';
-import LogIncidentModal from './components/modals/LogIncidentModal.jsx';
-import UploadCertificationModal from './components/modals/UploadCertificationModal.jsx';
-import AssignTrainingModal from './components/modals/AssignTrainingModal.jsx';
-import ForgotPasswordModal from './components/modals/ForgotPasswordModal.jsx';
-import AddWorkerModal from './components/modals/AddWorkerModal.jsx';
-import GenerateReportModal from './components/modals/GenerateReportModal.jsx';
-import { useAppState } from './hooks/useAppState.jsx';
+import AuthPage from './pages/AuthPage';
+import CompanySetupPage from './pages/CompanySetupPage';
+import DashboardPage from './pages/DashboardPage';
+import WorkforcePage from './pages/WorkforcePage';
+import CompliancePage from './pages/CompliancePage';
+import IncidentsPage from './pages/IncidentsPage';
+import TrainingPage from './pages/TrainingPage';
+import ReportsPage from './pages/ReportsPage';
+import SettingsPage from './pages/SettingsPage';
+import WorkerProfilePage from './pages/WorkerProfilePage';
+import Toast from './components/Toast';
+import LogIncidentModal from './components/modals/LogIncidentModal';
+import UploadCertificationModal from './components/modals/UploadCertificationModal';
+import AssignTrainingModal from './components/modals/AssignTrainingModal';
+import ForgotPasswordModal from './components/modals/ForgotPasswordModal';
+import AddWorkerModal from './components/modals/AddWorkerModal';
+import GenerateReportModal from './components/modals/GenerateReportModal';
+import { useAppState } from './hooks/useAppState';
 
 const App = () => {
   const {

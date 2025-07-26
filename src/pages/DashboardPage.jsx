@@ -1,6 +1,6 @@
 import React from 'react';
-import { useAppState } from '../hooks/useAppState.jsx';
-import Layout from '../components/Layout.jsx';
+import { useAppState } from '../hooks/useAppState';
+import Layout from '../components/Layout';
 
 const DashboardPage = () => {
   const { user, workforce, incidents, certifications, trainings, setShowModal, handleQuickAction } = useAppState();
