@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { useAppState } from '../hooks/useAppState';
-import Layout from '../components/Layout';
+import { useAppState } from '../hooks/useAppState.jsx';
+import Layout from '../components/Layout.jsx';
 
 const WorkforcePage = () => {
   const { workforce, setShowModal, handleViewProfile } = useAppState();

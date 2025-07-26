@@ -1,5 +1,5 @@
 import React from 'react';
-import { useAppState } from '../hooks/useAppState';
+import { useAppState } from '../hooks/useAppState.jsx';
 
 const Layout = ({ children, title }) => {
   const { 
