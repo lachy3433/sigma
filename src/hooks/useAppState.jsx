@@ -47,11 +47,15 @@ export const useAppState = () => {
   // EVENT HANDLERS
   // ==============================================
   const handleLogin = async (credentials) => {
-    await withLoading(async () => {
-      if (!credentials.email || !credentials.password) {
-        showToast('Please fill in all fields', 'error');
-        return;
-      }
+    if (!credentials.email || !credentials.password) {
+      showToast('Please fill in all fields', 'error');
+      return;
+    }
+    
+    setLoading(true);
+    try {
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 1000));
       
       setUser({ 
         name: credentials.email.includes('foreman') ? 'John Smith' : 'Maria Rodriguez',
@@ -61,20 +65,34 @@ export const useAppState = () => {
       });
       setCurrentPage('dashboard');
       showToast('Welcome back! Login successful.');
-    });
+    } catch (error) {
+      console.error('Login error:', error);
+      showToast('Login failed. Please try again.', 'error');
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleSignup = async (userData) => {
-    await withLoading(async () => {
-      if (!userData.name || !userData.email || !userData.password || !userData.role) {
-        showToast('Please fill in all required fields', 'error');
-        return;
-      }
+    if (!userData.name || !userData.email || !userData.password || !userData.role) {
+      showToast('Please fill in all required fields', 'error');
+      return;
+    }
+    
+    setLoading(true);
+    try {
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 1000));
       
       setUser({ ...userData, company: null });
       setCurrentPage('company-setup');
       showToast('Account created successfully!');
-    });
+    } catch (error) {
+      console.error('Signup error:', error);
+      showToast('Signup failed. Please try again.', 'error');
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleForgotPassword = () => {
