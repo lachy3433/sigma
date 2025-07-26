@@ -32,16 +32,22 @@ export const useAppState = () => {
 
   const withLoading = async (action) => {
     setLoading(true);
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    action();
-    setLoading(false);
+    try {
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      await action();
+    } catch (error) {
+      console.error('Action failed:', error);
+      showToast('An error occurred. Please try again.', 'error');
+    } finally {
+      setLoading(false);
+    }
   };
 
   // ==============================================
   // EVENT HANDLERS
   // ==============================================
   const handleLogin = async (credentials) => {
-    await withLoading(() => {
+    await withLoading(async () => {
       if (!credentials.email || !credentials.password) {
         showToast('Please fill in all fields', 'error');
         return;
@@ -59,7 +65,7 @@ export const useAppState = () => {
   };
 
   const handleSignup = async (userData) => {
-    await withLoading(() => {
+    await withLoading(async () => {
       if (!userData.name || !userData.email || !userData.password || !userData.role) {
         showToast('Please fill in all required fields', 'error');
         return;
@@ -83,7 +89,7 @@ export const useAppState = () => {
   };
 
   const handlePasswordReset = async (email) => {
-    await withLoading(() => {
+    await withLoading(async () => {
       console.log('Password reset requested for:', email);
       setShowModal(null);
       showToast('Password reset link sent to your email!');
@@ -91,7 +97,7 @@ export const useAppState = () => {
   };
 
   const handleCreateCompany = async (companyData) => {
-    await withLoading(() => {
+    await withLoading(async () => {
       setUser({...user, company: companyData.name});
       setCurrentPage('dashboard');
       showToast('Company created successfully!');
@@ -99,7 +105,7 @@ export const useAppState = () => {
   };
 
   const handleJoinCompany = async (company) => {
-    await withLoading(() => {
+    await withLoading(async () => {
       console.log('Request to join company:', company.name);
       setUser({...user, company: company.name});
       setCurrentPage('dashboard');
@@ -108,7 +114,7 @@ export const useAppState = () => {
   };
 
   const handleLogIncident = async (incidentData) => {
-    await withLoading(() => {
+    await withLoading(async () => {
       const newIncident = {
         id: incidents.length + 1,
         date: new Date().toISOString().split('T')[0],
@@ -122,7 +128,7 @@ export const useAppState = () => {
   };
 
   const handleUploadCertification = async (certData) => {
-    await withLoading(() => {
+    await withLoading(async () => {
       const newCert = {
         id: certifications.length + 1,
         worker: certData.worker,
@@ -137,7 +143,7 @@ export const useAppState = () => {
   };
 
   const handleAssignTraining = async (trainingData) => {
-    await withLoading(() => {
+    await withLoading(async () => {
       const newTraining = {
         id: trainings.length + 1,
         worker: trainingData.assignTo,
@@ -160,7 +166,7 @@ export const useAppState = () => {
   };
 
   const handleDownloadReport = async (report) => {
-    await withLoading(() => {
+    await withLoading(async () => {
       const blob = new Blob(['Mock report content for ' + report.name], { type: 'application/pdf' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
@@ -175,7 +181,7 @@ export const useAppState = () => {
   };
 
   const handleGenerateReport = async (reportData) => {
-    await withLoading(() => {
+    await withLoading(async () => {
       console.log('Generating report:', reportData);
       setShowModal(null);
       showToast('Report generated successfully!');
@@ -183,7 +189,7 @@ export const useAppState = () => {
   };
 
   const handleQuickAction = async (action) => {
-    await withLoading(() => {
+    await withLoading(async () => {
       switch (action) {
         case 'briefing':
           showToast('Daily safety briefing generated and sent to all workers.');
@@ -204,14 +210,14 @@ export const useAppState = () => {
   };
 
   const handleUpdateAccount = async (accountData) => {
-    await withLoading(() => {
+    await withLoading(async () => {
       setUser({...user, ...accountData});
       showToast('Account updated successfully!');
     });
   };
 
   const handleChangePassword = async (passwordData) => {
-    await withLoading(() => {
+    await withLoading(async () => {
       if (passwordData.new !== passwordData.confirm) {
         showToast('New passwords do not match', 'error');
         return;
@@ -229,7 +235,7 @@ export const useAppState = () => {
   };
 
   const handleAddWorker = async (workerData) => {
-    await withLoading(() => {
+    await withLoading(async () => {
       const newWorker = {
         id: workforce.length + 1,
         ...workerData,
