@@ -50,29 +50,41 @@ const App = () => {
   } = useAppState();
 
   const renderPage = () => {
-    switch (currentPage) {
-      case 'login':
-        return <AuthPage />;
-      case 'company-setup':
-        return <CompanySetupPage />;
-      case 'dashboard':
-        return <DashboardPage />;
-      case 'workforce':
-        return <WorkforcePage />;
-      case 'compliance':
-        return <CompliancePage />;
-      case 'incidents':
-        return <IncidentsPage />;
-      case 'training':
-        return <TrainingPage />;
-      case 'reports':
-        return <ReportsPage />;
-      case 'settings':
-        return <SettingsPage />;
-      case 'worker-profile':
-        return <WorkerProfilePage />;
-      default:
-        return <AuthPage />;
+    try {
+      switch (currentPage) {
+        case 'login':
+          return <AuthPage />;
+        case 'company-setup':
+          return <CompanySetupPage />;
+        case 'dashboard':
+          return <DashboardPage />;
+        case 'workforce':
+          return <WorkforcePage />;
+        case 'compliance':
+          return <CompliancePage />;
+        case 'incidents':
+          return <IncidentsPage />;
+        case 'training':
+          return <TrainingPage />;
+        case 'reports':
+          return <ReportsPage />;
+        case 'settings':
+          return <SettingsPage />;
+        case 'worker-profile':
+          return <WorkerProfilePage />;
+        default:
+          return <AuthPage />;
+      }
+    } catch (error) {
+      console.error('Error rendering page:', error);
+      return (
+        <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+          <div className="text-center">
+            <h1 className="text-2xl font-bold text-gray-800 mb-4">Something went wrong</h1>
+            <p className="text-gray-600">Please refresh the page and try again.</p>
+          </div>
+        </div>
+      );
     }
   };
 
